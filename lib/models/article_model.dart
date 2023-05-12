@@ -7,7 +7,7 @@ class Article {
   final String imageUrl;
   final DateTime publishedAt;
   final String content;
-  final Source source;
+  // final Source source;
 
   Article({
     required this.author,
@@ -16,6 +16,6 @@ class Article {
     required this.imageUrl,
     required this.publishedAt,
     required this.content,
-    required this.source,
+    // required this.source,
   });
 }
