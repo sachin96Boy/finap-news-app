@@ -1,4 +1,5 @@
 import 'package:fintechasia_news_app/models/news_provider.dart';
+import 'package:fintechasia_news_app/widgets/carousel_slider.dart';
 import 'package:fintechasia_news_app/widgets/notification_component.dart';
 import 'package:fintechasia_news_app/widgets/search_bar_component.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class Homecreen extends StatefulWidget {
 }
 
 class _HomecreenState extends State<Homecreen> {
-  var _isInit = true;
+  final _isInit = true;
   var _isLoading = false;
   @override
   void didChangeDependencies() {
@@ -31,38 +32,56 @@ class _HomecreenState extends State<Homecreen> {
 
   @override
   Widget build(BuildContext context) {
+    final newsArticles = Provider.of<NewsProvider>(context).newsArticles;
+    final headlineArticles =
+        Provider.of<NewsProvider>(context).headlineArticles;
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [SearchBar(), NotificationAlert()],
-            ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Latest News",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [SearchBar(), NotificationAlert()],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Latest News",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24.0),
+                      ),
+                      SizedBox(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text("See All"),
+                              Icon(Icons.arrow_forward),
+                            ]),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child:
+                        CarasoulSlider(headlineNewsitemList: headlineArticles),
+                  )
+                ],
               ),
-              SizedBox(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text("See All"),
-                      Icon(Icons.arrow_forward),
-                    ]),
-              )
-            ],
-          )
-        ],
-      ),
+            ),
     );
   }
 }
