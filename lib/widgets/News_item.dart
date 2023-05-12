@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dart_date/dart_date.dart';
 
 class NewsItem extends StatelessWidget {
   final String imageUrl;
@@ -15,6 +16,7 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const pattern = 'yMMMd';
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       elevation: 4.0,
@@ -35,22 +37,26 @@ class NewsItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 5.0,
-                horizontal: 20.0,
+                horizontal: 10.0,
               ),
               child: Text(
                 title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
           Positioned(
+              bottom: 5,
+              left: 0,
+              right: 0,
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(author),
-              Text(publishedAt as String),
-            ],
-          ))
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Mr $author'),
+                  Text(publishedAt.format(pattern)),
+                ],
+              ))
         ],
       ),
     );

@@ -28,11 +28,11 @@ class NewsProvider extends ChangeNotifier {
       final newsResponse = await http.get(
           Uri.parse('$url?domains=techcrunch.com,thenextweb.com'),
           headers: headers);
-      final headlineResponse = await http.get(
-          Uri.parse('$headlineurl?country=us'),
-          headers: headers);
+      final headlineResponse = await http
+          .get(Uri.parse('$headlineurl?country=us'), headers: headers);
 
-      if (headlineResponse.statusCode == 200) {
+      if (headlineResponse.statusCode == 200 &&
+          newsResponse.statusCode == 200) {
         final responseData =
             json.decode(newsResponse.body) as Map<String, dynamic>;
         final headlineResponseData =
@@ -41,7 +41,7 @@ class NewsProvider extends ChangeNotifier {
         var articleList = responseData['articles'] as List<dynamic>;
         var headlineArticleList =
             headlineResponseData['articles'] as List<dynamic>;
-        
+
         final List<Article> loadedNewsArticles = [];
         final List<Article> loadedHeadlineArticles = [];
         for (var element in headlineArticleList) {
@@ -69,10 +69,10 @@ class NewsProvider extends ChangeNotifier {
               imageUrl: element['urlToImage'],
               publishedAt: DateTime.parse(element['publishedAt']),
               content: element['content'],
-        //       source: Source(
-        //         id: element['source']['id'],
-        //         name: element['source']['name'],
-        //       ),
+              //       source: Source(
+              //         id: element['source']['id'],
+              //         name: element['source']['name'],
+              //       ),
             ),
           );
         }
