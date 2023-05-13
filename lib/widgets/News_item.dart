@@ -53,8 +53,12 @@ class NewsItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Mr $author'),
-                  Text(publishedAt.format(pattern)),
+                  Text(
+                    'Mr $author',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  Text(publishedAt.format(pattern),
+                      style: const TextStyle(color: Colors.white)),
                 ],
               ))
         ],

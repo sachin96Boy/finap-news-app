@@ -43,6 +43,7 @@ class _HomecreenState extends State<Homecreen> {
               child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
+              physics: const ScrollPhysics(),
               child: Column(
                 children: [
                   Padding(

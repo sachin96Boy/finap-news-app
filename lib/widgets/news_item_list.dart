@@ -17,7 +17,7 @@ class NewsItemList extends StatelessWidget {
       ),
       itemCount: newsArticles.length,
       shrinkWrap: true,
-      scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
     );
   }
 }
