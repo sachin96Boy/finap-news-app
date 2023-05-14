@@ -44,49 +44,46 @@ class _HomecreenState extends State<Homecreen> {
             )
           : SingleChildScrollView(
               physics: const ScrollPhysics(),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
+              child: Container(
+                margin: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [SearchBar(), NotificationAlert()],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Latest News",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24.0),
-                      ),
-                      SizedBox(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text("See All"),
-                              Icon(Icons.arrow_forward),
-                            ]),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child:
-                        CarasoulSlider(headlineNewsitemList: headlineArticles),
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  NewsItemList(newsArticles: newsArticles)
-                ],
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Latest News",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24.0),
+                        ),
+                        SizedBox(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text("See All"),
+                                Icon(Icons.arrow_forward),
+                              ]),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: CarasoulSlider(
+                          headlineNewsitemList: headlineArticles),
+                    ),
+                    NewsItemList(newsArticles: newsArticles)
+                  ],
+                ),
               ),
             ),
     );

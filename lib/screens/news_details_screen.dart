@@ -45,11 +45,18 @@ class NewsDetailsScreen extends StatelessWidget {
             top: 40.0,
             child: Row(
               children: [
-                IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.black26,
+                    backgroundBlendMode: BlendMode.darken,
+                  ),
+                  child: IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
@@ -73,11 +80,16 @@ class NewsDetailsScreen extends StatelessWidget {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(selectedArticle.source.name),
+                    Text(
+                      selectedArticle.source.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16.0),
+                    ),
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Text(selectedArticle.content)
+                    Text(selectedArticle.content,
+                        style: const TextStyle(fontSize: 16.0))
                   ],
                 )),
               ))

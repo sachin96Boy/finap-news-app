@@ -20,13 +20,15 @@ class NewsItem extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       elevation: 4.0,
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.symmetric(vertical: 5.0),
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.network(
               imageUrl,
+              color: Colors.black38,
+              colorBlendMode: BlendMode.darken,
               height: 130.0,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -46,33 +48,39 @@ class NewsItem extends StatelessWidget {
           ),
           Positioned(
             top: 5.0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 5.0,
-                horizontal: 10.0,
-              ),
-              child: Text(
-                title,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white),
+            bottom: 5.0,
+            left: 0,
+            right: 0,
+            child: Container(
+              margin: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 16.0),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Mr $author',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      Text(publishedAt.format(pattern),
+                          style: const TextStyle(color: Colors.white)),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
-          Positioned(
-              bottom: 5,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Mr $author',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  Text(publishedAt.format(pattern),
-                      style: const TextStyle(color: Colors.white)),
-                ],
-              ))
         ],
       ),
     );

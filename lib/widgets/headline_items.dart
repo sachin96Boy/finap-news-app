@@ -24,7 +24,9 @@ class HeadlineItems extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           child: Image.network(
             imageUrl,
-            height: 300.0,
+            color: Colors.black54,
+            colorBlendMode: BlendMode.darken,
+            height: 500.0,
             width: double.infinity,
             fit: BoxFit.fill,
             errorBuilder: (context, error, stackTrace) {
@@ -33,7 +35,7 @@ class HeadlineItems extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 child: const SizedBox(
-                  height: 300,
+                  height: 500,
                   width: double.infinity,
                   child: Icon(Icons.broken_image_outlined),
                 ),
@@ -42,31 +44,45 @@ class HeadlineItems extends StatelessWidget {
           ),
         ),
         Positioned(
-            top: 15.0,
-            left: 0,
-            right: 0,
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Text(
-                'by $author',
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-              Text(
-                title,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.white),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Text(
-                desc,
-                style: const TextStyle(fontSize: 14.0, color: Colors.white),
-              )
-            ]))
+          top: 15.0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            margin:
+                const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                  child: Text(
+                    'by $author',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                ),
+                Flexible(
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Flexible(
+                  child: Text(
+                    desc,
+                    style: const TextStyle(fontSize: 14.0, color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
       ]),
     );
   }
