@@ -5,7 +5,7 @@ class Article {
   final String author;
   final String title;
   final String description;
-  final String imageUrl;
+  final String? imageUrl;
   final DateTime publishedAt;
   final String content;
   final Source source;

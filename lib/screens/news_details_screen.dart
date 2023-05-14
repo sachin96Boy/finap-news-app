@@ -1,7 +1,6 @@
 import 'package:dart_date/dart_date.dart';
-import 'package:fintechasia_news_app/models/article_model.dart';
 import 'package:fintechasia_news_app/models/news_provider.dart';
-import 'package:fintechasia_news_app/models/source_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +31,8 @@ class NewsDetailsScreen extends StatelessWidget {
                 height: 350.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(selectedArticle.imageUrl, scale: 1.0),
+                    image:
+                        NetworkImage('${selectedArticle.imageUrl}', scale: 1.0),
                     fit: BoxFit.cover,
                     onError: (exception, stackTrace) {
                       const SizedBox(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HeadlineItems extends StatelessWidget {
-  final String imageUrl;
+  final String? imageUrl;
   final String author;
   final String title;
-  final String desc;
+  final String? desc;
 
   const HeadlineItems(
       {super.key,
@@ -23,7 +23,7 @@ class HeadlineItems extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
           child: Image.network(
-            imageUrl,
+            '$imageUrl',
             color: Colors.black54,
             colorBlendMode: BlendMode.darken,
             height: 500.0,
@@ -71,7 +71,7 @@ class HeadlineItems extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    desc,
+                    '$desc',
                     style: const TextStyle(fontSize: 12.0, color: Colors.white),
                   ),
                 )

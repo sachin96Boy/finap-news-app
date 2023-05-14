@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../screens/search_screen.dart';
+
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textController = TextEditingController();
     return Flexible(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(10.0)),
@@ -19,6 +21,7 @@ class SearchBar extends StatelessWidget {
                 fit: FlexFit.tight,
                 flex: 4,
                 child: TextField(
+                  controller: textController,
                   textInputAction: TextInputAction.search,
                   decoration: const InputDecoration(
                       border: InputBorder.none, hintText: "Enter to search"),
@@ -26,7 +29,13 @@ class SearchBar extends StatelessWidget {
                     // logic when changing
                   },
                   onSubmitted: (value) {
-                    // do something
+                    // do
+                    Navigator.of(context).pushReplacementNamed(
+                        SearchScreen.routeName,
+                        arguments: {
+                          'searchTerm': value,
+                        });
+                    textController.clear();
                   },
                 ),
               ),
@@ -36,6 +45,7 @@ class SearchBar extends StatelessWidget {
                 child: IconButton(
                     onPressed: () {
                       // search logic when pressed
+                      textController.clear();
                     },
                     icon: const Icon(Icons.search)),
               )

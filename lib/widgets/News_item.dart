@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dart_date/dart_date.dart';
 
 class NewsItem extends StatelessWidget {
-  final String imageUrl;
+  final String? imageUrl;
   final String title;
   final String author;
   final DateTime publishedAt;
@@ -26,7 +26,7 @@ class NewsItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.network(
-              imageUrl,
+              '$imageUrl',
               color: Colors.black38,
               colorBlendMode: BlendMode.darken,
               height: 130.0,

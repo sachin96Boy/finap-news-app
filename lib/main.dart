@@ -1,6 +1,8 @@
 import 'package:fintechasia_news_app/models/news_provider.dart';
 import 'package:fintechasia_news_app/screens/home_screen.dart';
 import 'package:fintechasia_news_app/screens/news_details_screen.dart';
+import 'package:fintechasia_news_app/screens/news_list_screen.dart';
+import 'package:fintechasia_news_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const Homecreen(),
           NewsDetailsScreen.routeName: (context) => const NewsDetailsScreen(),
+          NewsListScreen.routeName: (context) => const NewsListScreen(),
+          SearchScreen.routeName: (context) => const SearchScreen(),
         },
       ),
     );
