@@ -54,21 +54,17 @@ class HeadlineItems extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Flexible(
-                  child: Text(
-                    'by $author',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
+                Text(
+                  'by $author',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
                 ),
-                Flexible(
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Colors.white),
-                  ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      color: Colors.white),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -76,7 +72,7 @@ class HeadlineItems extends StatelessWidget {
                 Flexible(
                   child: Text(
                     desc,
-                    style: const TextStyle(fontSize: 14.0, color: Colors.white),
+                    style: const TextStyle(fontSize: 12.0, color: Colors.white),
                   ),
                 )
               ],
