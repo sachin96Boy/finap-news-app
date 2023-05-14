@@ -30,6 +30,18 @@ class NewsItem extends StatelessWidget {
               height: 130.0,
               width: double.infinity,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: const SizedBox(
+                    height: 130.0,
+                    width: double.infinity,
+                    child: Icon(Icons.broken_image_outlined),
+                  ),
+                );
+              },
             ),
           ),
           Positioned(

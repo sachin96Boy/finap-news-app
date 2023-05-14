@@ -27,6 +27,18 @@ class HeadlineItems extends StatelessWidget {
             height: 300.0,
             width: double.infinity,
             fit: BoxFit.fill,
+            errorBuilder: (context, error, stackTrace) {
+              return Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                child: const SizedBox(
+                  height: 300,
+                  width: double.infinity,
+                  child: Icon(Icons.broken_image_outlined),
+                ),
+              );
+            },
           ),
         ),
         Positioned(
