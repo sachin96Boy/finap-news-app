@@ -1,4 +1,6 @@
+import 'package:fintechasia_news_app/models/news_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/search_screen.dart';
 
@@ -30,12 +32,16 @@ class SearchBar extends StatelessWidget {
                   },
                   onSubmitted: (value) {
                     // do
-                    Navigator.of(context).pushReplacementNamed(
-                        SearchScreen.routeName,
-                        arguments: {
-                          'searchTerm': value,
-                        });
-                    textController.clear();
+                    Provider.of<NewsProvider>(context, listen: false)
+                        .fetchAndSetsearchedNewsArticles(value)
+                        .then((_) {
+                      textController.clear();
+                      Navigator.of(context).pushReplacementNamed(
+                          SearchScreen.routeName,
+                          arguments: {
+                            'searchTerm': value,
+                          });
+                    });
                   },
                 ),
               ),

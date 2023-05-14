@@ -4,7 +4,7 @@ import 'package:dart_date/dart_date.dart';
 class NewsItem extends StatelessWidget {
   final String? imageUrl;
   final String title;
-  final String author;
+  final String? author;
   final DateTime publishedAt;
 
   const NewsItem(
@@ -69,12 +69,16 @@ class NewsItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Mr $author',
-                        style: const TextStyle(color: Colors.white),
+                      Flexible(
+                        child: Text(
+                          '$author',
+                          style: const TextStyle(color: Colors.white),
+                        ),
                       ),
-                      Text(publishedAt.format(pattern),
-                          style: const TextStyle(color: Colors.white)),
+                      Flexible(
+                        child: Text(publishedAt.format(pattern),
+                            style: const TextStyle(color: Colors.white)),
+                      ),
                     ],
                   ),
                 ],

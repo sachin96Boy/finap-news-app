@@ -33,18 +33,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Article> searchedArticleList = [];
-
     final args =
         ModalRoute.of(context)?.settings.arguments as Map<String, String>;
     final searchTerm = args['searchTerm'] as String;
-    Provider.of<NewsProvider>(context)
-        .fetchAndSetsearchedNewsArticles(searchTerm)
-        .then((_) {
-      setState(() {
-        searchedArticleList = Provider.of<NewsProvider>(context).newsArticles;
-      });
-    });
+
+    final searchedArticleList = Provider.of<NewsProvider>(context).newsArticles;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120.0),
@@ -61,38 +54,42 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(children: [
-          const SizedBox(
-            height: 10.0,
-          ),
-          SizedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () => _showModelFromBottom(context),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.filter_alt_outlined),
-                      Text('Filter')
-                    ],
-                  ),
-                ),
-                const Flexible(child: SizedBox(height: 50, child: NewsFilter()))
-              ],
+        child: Container(
+          margin: const EdgeInsets.all(10.0),
+          child: Column(children: [
+            const SizedBox(
+              height: 10.0,
             ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Text(
-              'About ${searchedArticleList.length.round()} results for $searchTerm'),
-          const SizedBox(
-            height: 10.0,
-          ),
-          NewsItemList(newsArticles: searchedArticleList)
-        ]),
+            SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () => _showModelFromBottom(context),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.filter_alt_outlined),
+                        Text('Filter')
+                      ],
+                    ),
+                  ),
+                  const Flexible(
+                      child: SizedBox(height: 50, child: NewsFilter()))
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Text(
+                'About ${searchedArticleList.length.round()} results for $searchTerm'),
+            const SizedBox(
+              height: 10.0,
+            ),
+            NewsItemList(newsArticles: searchedArticleList)
+          ]),
+        ),
       ),
     );
   }
