@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fintechasia_news_app/models/article_model.dart';
+import 'package:fintechasia_news_app/screens/news_details_screen.dart';
 import 'package:fintechasia_news_app/widgets/headline_items.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +16,16 @@ class CarasoulSlider extends StatelessWidget {
         aspectRatio: 2.0,
         enlargeCenterPage: true,
       ),
-      itemBuilder: (context, index, realIndex) => HeadlineItems(
-          imageUrl: headlineNewsitemList[index].imageUrl,
-          author: headlineNewsitemList[index].author,
-          title: headlineNewsitemList[index].title,
-          desc: headlineNewsitemList[index].description),
+      itemBuilder: (context, index, realIndex) => GestureDetector(
+        onTap: () => Navigator.of(context).pushNamed(
+            NewsDetailsScreen.routeName,
+            arguments: {"id": headlineNewsitemList[index].id}),
+        child: HeadlineItems(
+            imageUrl: headlineNewsitemList[index].imageUrl,
+            author: headlineNewsitemList[index].author,
+            title: headlineNewsitemList[index].title,
+            desc: headlineNewsitemList[index].description),
+      ),
     );
   }
 }
