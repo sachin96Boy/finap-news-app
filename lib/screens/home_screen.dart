@@ -47,14 +47,16 @@ class _HomecreenState extends State<Homecreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120.0),
-        child: Container(
-          margin: const EdgeInsets.only(top: 50),
-          child: Container(
-            margin: const EdgeInsets.all(10.0),
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [SearchBar(), NotificationAlert()],
+        child: SafeArea(
+          top: true,
+          child: SizedBox(
+            child: Container(
+              margin: const EdgeInsets.all(10.0),
+              color: Colors.white,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [SearchBarCustom(), NotificationAlert()],
+              ),
             ),
           ),
         ),

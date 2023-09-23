@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../screens/search_screen.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+class SearchBarCustom extends StatelessWidget {
+  const SearchBarCustom({super.key});
 
   @override
   Widget build(BuildContext context) {
