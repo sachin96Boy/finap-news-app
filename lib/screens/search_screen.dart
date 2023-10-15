@@ -1,4 +1,3 @@
-import 'package:fintechasia_news_app/models/article_model.dart';
 import 'package:fintechasia_news_app/models/news_provider.dart';
 import 'package:fintechasia_news_app/widgets/filter_input_section.dart';
 import 'package:fintechasia_news_app/widgets/news_item_list.dart';
@@ -46,9 +45,9 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Container(
             margin: const EdgeInsets.all(10.0),
             color: Colors.white,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [SearchBar()],
+              children: [SearchBarCustom()],
             ),
           ),
         ),
@@ -66,9 +65,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   InkWell(
                     onTap: () => _showModelFromBottom(context),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(Icons.filter_alt_outlined),
                         Text('Filter')
                       ],
